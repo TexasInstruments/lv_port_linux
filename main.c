@@ -159,7 +159,7 @@ int main(int argc, char **argv)
     lv_linux_disp_init();
 
     /*Create a Demo*/
-    lv_demo_high_res_api_example("lvgl/demos/high_res/assets/", NULL, "security_app_slides");
+    lv_demo_high_res_api_example("/etc/ti-lvgl-demo/assets/", "/etc/ti-lvgl-demo/assets/ti-logo.png", "/etc/ti-lvgl-demo/security_app_slides");
 
     lv_linux_run_loop();
 
