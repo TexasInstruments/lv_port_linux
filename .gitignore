@@ -10,6 +10,7 @@ demo
 *.elf
 /build/
 /bin/
+build-arm64/
 
 # Linker output
 *.ilk
