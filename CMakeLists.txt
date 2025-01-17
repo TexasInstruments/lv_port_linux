@@ -61,7 +61,7 @@ else()
 
     # No specific build steps required for FBDEV
     add_executable(lvglsim main.c mouse_cursor_icon.c)
-    target_link_libraries(lvglsim lvgl lvgl::examples lvgl::demos lvgl::thorvg m pthread)
+    target_link_libraries(lvglsim lvgl lvgl::examples lvgl::demos lvgl::thorvg m pthread asound mosquitto)
 endif()
 
 add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/lvglsim DEPENDS lvglsim)
