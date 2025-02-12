@@ -52,7 +52,7 @@
 
 #if LV_USE_STDLIB_MALLOC == LV_STDLIB_BUILTIN
     /*Size of the memory available for `lv_malloc()` in bytes (>= 2kB)*/
-    #define LV_MEM_SIZE (4096 * 1024)
+    #define LV_MEM_SIZE (64 * 1024U)
 
     /*Size of the memory expand for `lv_malloc()` in bytes*/
     #define LV_MEM_POOL_EXPAND_SIZE 0
@@ -143,6 +143,7 @@
 	#define LV_DRAW_SW_SUPPORT_AL88			1
 	#define LV_DRAW_SW_SUPPORT_A8			1
 	#define LV_DRAW_SW_SUPPORT_I1			1
+    #define LV_DRAW_SW_I1_LUM_THRESHOLD 127
 
 	/* Set the number of draw unit.
      * > 1 requires an operating system enabled in `LV_USE_OS`
@@ -387,7 +388,7 @@
 
 /* VG-Lite Simulator */
 /*Requires: LV_USE_THORVG_INTERNAL or LV_USE_THORVG_EXTERNAL */
-#define LV_USE_VG_LITE_THORVG  1
+#define LV_USE_VG_LITE_THORVG  0
 
 #if LV_USE_VG_LITE_THORVG
 
@@ -698,7 +699,7 @@
 /*File system interfaces for common APIs */
 
 /*Setting a default driver letter allows skipping the driver prefix in filepaths*/
-#define LV_FS_DEFAULT_DRIVE_LETTER 'A'
+#define LV_FS_DEFAULT_DRIVER_LETTER 'A'
 
 /*API for fopen, fread, etc*/
 #define LV_USE_FS_STDIO 1
@@ -1008,6 +1009,14 @@
 /*Driver for /dev/dri/card*/
 #define LV_USE_LINUX_DRM        0
 
+#if LV_USE_LINUX_DRM
+
+    /* Use the MESA GBM library to allocate DMA buffers that can be
+     * shared across sub-systems and libraries using the Linux DMA-BUF API.
+     * The GBM library aims to provide a platform independent memory management system
+     * it supports the major GPU vendors - This option requires linking with libgbm */
+    #define LV_LINUX_DRM_GBM_BUFFERS 0
+#endif
 /*Interface for TFT_eSPI*/
 #define LV_USE_TFT_ESPI         0
 
@@ -1073,6 +1082,7 @@
 
 /*Benchmark your system*/
 #define LV_USE_DEMO_HIGH_RES 1
+#define LV_USE_DEMO_ECG        0
 
 /*Render test for each primitives. Requires at least 480x272 display*/
 #define LV_USE_DEMO_RENDER 0
