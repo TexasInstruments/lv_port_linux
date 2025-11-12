@@ -23,7 +23,7 @@ if (LV_USE_LINUX_DRM)
 
     target_include_directories(lvgl PUBLIC ${LIBDRM_INCLUDE_DIRS})
     add_executable(lvglsim main.c mouse_cursor_icon.c)
-    target_link_libraries(lvglsim lvgl lvgl::examples lvgl::demos lvgl::thorvg ${LIBDRM_LIBRARIES} m pthread)
+    target_link_libraries(lvglsim lvgl lvgl::examples lvgl::demos lvgl::thorvg ${LIBDRM_LIBRARIES} m pthread asound mosquitto)
 
 elseif (LV_USE_SDL)
 
@@ -55,7 +55,7 @@ elseif (LV_USE_WAYLAND)
         mouse_cursor_icon.c backends/wayland.c)
     target_compile_definitions(lvglsim PRIVATE LV_CONF_INCLUDE_SIMPLE)
     target_link_libraries(lvglsim lvgl lvgl::examples lvgl::demos lvgl::thorvg m
-        wayland-client wayland-cursor xkbcommon)
+        wayland-client wayland-cursor xkbcommon asound mosquitto)
 
 else()
 
