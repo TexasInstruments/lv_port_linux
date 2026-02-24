@@ -30,6 +30,11 @@
 #include "src/lib/simulator_util.h"
 #include "src/lib/simulator_settings.h"
 
+/* Include the high_res demo from external lv_demos repository */
+#if LV_USE_DEMO_HIGH_RES
+#include "src/high_res/lv_demo_high_res.h"
+#endif
+
 /* Internal functions */
 static void configure_simulator(int argc, char **argv);
 static void print_lvgl_version(void);
